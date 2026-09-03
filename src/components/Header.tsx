@@ -1,8 +1,17 @@
 "use client";
 
-import { Menu, Search, Bell, ChevronDown } from "lucide-react";
+import { Menu, Search, Bell, ChevronDown, LogOut, UserRound } from "lucide-react";
+import { useState } from "react";
 
 export default function Header({ onToggleSidebar }: { onToggleSidebar: () => void }) {
+  const [profileOpen, setProfileOpen] = useState(false)
+
+  const handleLogout = () => {
+    window.localStorage.removeItem("alm-admin-authenticated")
+    window.sessionStorage.removeItem("alm-admin-authenticated")
+    window.location.replace("/")
+  }
+
   return (
     <header className="bg-white border-b border-slate-200/80 px-8 py-3.5 flex items-center justify-between gap-4">
       <button
@@ -37,21 +46,53 @@ export default function Header({ onToggleSidebar }: { onToggleSidebar: () => voi
           </span>
         </button>
 
-        <div className="flex items-center gap-3 border-l border-slate-200 pl-4">
+        <div className="relative flex items-center gap-3 border-l border-slate-200 pl-4">
           <div className="w-9 h-9 rounded-full bg-slate-200 overflow-hidden border border-emerald-600 flex items-center justify-center">
             <img
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100"
+              src="/Balakram%20Tudu.png"
               alt="Avatar"
               className="w-full h-full object-cover"
             />
           </div>
           <div className="flex flex-col text-left">
             <span className="text-xs font-bold text-slate-900">
-              Johar, Balakram Tudu
+              Balakram Tudu
             </span>
             <span className="text-[11px] text-slate-400">Admin</span>
           </div>
-          <ChevronDown className="w-4 h-4 text-slate-400 cursor-pointer" />
+          <button
+            type="button"
+            onClick={() => setProfileOpen((open) => !open)}
+            aria-label="Open account menu"
+            aria-expanded={profileOpen}
+            className="rounded-lg p-1 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700"
+          >
+            <ChevronDown className={`w-4 h-4 transition-transform ${profileOpen ? "rotate-180" : ""}`} />
+          </button>
+
+          {profileOpen && (
+            <div className="absolute right-0 top-full z-50 mt-3 w-56 rounded-xl border border-slate-200 bg-white p-2 shadow-xl">
+              <div className="border-b border-slate-100 px-3 py-2">
+                <p className="text-xs font-bold text-slate-800">Balakram Tudu</p>
+                <p className="mt-0.5 text-[11px] text-slate-400">Admin account</p>
+              </div>
+              <button
+                type="button"
+                className="flex w-full items-center gap-2 rounded-lg px-3 py-2.5 text-left text-xs font-medium text-slate-600 hover:bg-slate-50"
+              >
+                <UserRound className="h-4 w-4 text-slate-400" />
+                <span>My Profile</span>
+              </button>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="flex w-full items-center gap-2 rounded-lg px-3 py-2.5 text-left text-xs font-semibold text-rose-600 hover:bg-rose-50"
+              >
+                <LogOut className="h-4 w-4" />
+                <span>Logout</span>
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </header>

@@ -10,7 +10,7 @@ const ADMIN_PASSWORD = "Mandawa2026"
 export default function AuthGate({ children }: { children: React.ReactNode }) {
   const [authenticated, setAuthenticated] = useState(false)
   const [ready, setReady] = useState(false)
-  const [adminId, setAdminId] = useState("")
+  const [adminId, setAdminId] = useState(ADMIN_ID)
   const [password, setPassword] = useState("")
   const [rememberMe, setRememberMe] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
