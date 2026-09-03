@@ -2,10 +2,16 @@
 
 import { Menu, Search, Bell, ChevronDown } from "lucide-react";
 
-export default function Header() {
+export default function Header({ onToggleSidebar }: { onToggleSidebar: () => void }) {
   return (
     <header className="bg-white border-b border-slate-200/80 px-8 py-3.5 flex items-center justify-between gap-4">
-      <button className="text-slate-500 hover:text-slate-800 p-1.5 rounded-lg">
+      <button
+        type="button"
+        onClick={onToggleSidebar}
+        aria-label="Toggle sidebar"
+        title="Toggle sidebar"
+        className="text-slate-500 hover:text-slate-800 p-1.5 rounded-lg"
+      >
         <Menu className="w-6 h-6" />
       </button>
 

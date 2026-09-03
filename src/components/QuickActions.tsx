@@ -51,7 +51,7 @@ export default function QuickActions() {
       border: "border-red-700",
     },
     {
-      title: "Cash Book Balance",
+      title: "Available Balance",
       value: loading ? "..." : formatINR(balance),
       subtitle: "",
       icon: Wallet,

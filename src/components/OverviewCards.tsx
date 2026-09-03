@@ -40,7 +40,7 @@ export default function OverviewCards() {
     {
       icon: <span className="w-4 h-4">💰</span>,
       value: "-18,850",
-      label: "Cash Book Balance",
+      label: "Available Balance",
       linkText: "View details",
       cardBg: "bg-purple-50/40",
       cardBorder: "border-purple-100",

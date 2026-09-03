@@ -2,6 +2,7 @@
 
 import { useMembers, useCashBook } from "@/lib/firebase-data"
 import { UserPlus, ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 function formatDate(dateStr: string) {
   if (!dateStr) return "Recently"
@@ -77,12 +78,12 @@ export default function RecentActivities() {
         <h3 className="text-sm font-bold text-slate-900 tracking-tight">
           Recent Activities
         </h3>
-        <a
-          href="#"
+        <Link
+          href="/cashbook"
           className="text-xs font-semibold text-emerald-700 hover:underline inline-flex items-center"
         >
           View All <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
-        </a>
+        </Link>
       </div>
 
       <div className="bg-white border border-slate-200/80 rounded-2xl p-4 space-y-3">
