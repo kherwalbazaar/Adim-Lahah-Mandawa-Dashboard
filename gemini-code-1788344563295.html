@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adim Lahah Mandawa - Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              500: '#22c55e',
+              800: '#166534',
+              900: '#0e3f28',
+              950: '#072718',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-700 font-sans antialiased">
+  <div class="min-h-screen flex">
+    
+    <aside class="w-72 bg-white border-r border-slate-200/80 flex flex-col justify-between p-6 shrink-0">
+      <div class="space-y-6">
+        <div class="flex flex-col items-center text-center">
+          <div class="w-20 h-20 rounded-full border-2 border-emerald-600 p-1 flex items-center justify-center mb-3">
+            <div class="w-full h-full rounded-full bg-emerald-50 flex items-center justify-center text-emerald-700 font-bold text-xs text-center leading-tight">
+              ALM<br>LOGO
+            </div>
+          </div>
+          <h1 class="text-xl font-extrabold tracking-tight text-slate-800 uppercase">Adim Lahah Mandawa</h1>
+          <p class="text-[11px] text-slate-400 font-semibold tracking-wider mt-1">Unity • Culture • Education • Welfare</p>
+        </div>
+
+        <nav class="space-y-1.5 pt-2">
+          <a href="#" class="flex items-center gap-3.5 px-4 py-3 rounded-xl bg-brand-900 text-white font-medium text-sm transition-colors shadow-sm shadow-emerald-950/20">
+            <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+            <span>Dashboard</span>
+          </a>
+
+          <a href="#" class="flex items-center justify-between px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 font-medium text-sm transition-colors">
+            <div class="flex items-center gap-3.5">
+              <i data-lucide="message-square" class="w-5 h-5 text-slate-400"></i>
+              <span>Group Chat</span>
+            </div>
+            <span class="bg-rose-500 text-white text-[11px] font-bold px-2 py-0.5 rounded-full">12</span>
+          </a>
+
+          <a href="#" class="flex items-center gap-3.5 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 font-medium text-sm transition-colors">
+            <i data-lucide="users" class="w-5 h-5 text-slate-400"></i>
+            <span>Members</span>
+          </a>
+
+          <a href="#" class="flex items-center gap-3.5 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 font-medium text-sm transition-colors">
+            <i data-lucide="megaphone" class="w-5 h-5 text-slate-400"></i>
+            <span>Announcements</span>
+          </a>
+
+          <a href="#" class="flex items-center gap-3.5 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 font-medium text-sm transition-colors">
+            <i data-lucide="calendar" class="w-5 h-5 text-slate-400"></i>
+            <span>Events</span>
+          </a>
+
+          <a href="#" class="flex items-center gap-3.5 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 font-medium text-sm transition-colors">
+            <i data-lucide="wallet" class="w-5 h-5 text-slate-400"></i>
+            <span>Payments</span>
+          </a>
+
+          <a href="#" class="flex items-center gap-3.5 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 font-medium text-sm transition-colors">
+            <i data-lucide="receipt" class="w-5 h-5 text-slate-400"></i>
+            <span>Payment History</span>
+          </a>
+
+          <a href="#" class="flex items-center gap-3.5 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 font-medium text-sm transition-colors">
+            <i data-lucide="user" class="w-5 h-5 text-slate-400"></i>
+            <span>My Profile</span>
+          </a>
+
+          <a href="#" class="flex items-center gap-3.5 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100 font-medium text-sm transition-colors">
+            <i data-lucide="settings" class="w-5 h-5 text-slate-400"></i>
+            <span>Settings</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="mt-6 bg-emerald-50/70 border border-emerald-200/60 rounded-2xl p-4">
+        <div class="flex items-center gap-2 text-brand-900 font-bold text-xs uppercase tracking-wide">
+          <i data-lucide="volume-2" class="w-4 h-4 text-emerald-600"></i>
+          <span>Latest Announcement</span>
+        </div>
+        <h4 class="font-bold text-slate-900 text-sm mt-3">Night Jatra Program on 20 Jan 2026</h4>
+        <div class="flex items-center gap-1.5 text-xs text-slate-500 mt-2 font-medium">
+          <i data-lucide="calendar" class="w-3.5 h-3.5 text-slate-400"></i>
+          <span>20 Jan 2026 | Bahanada, Khunta</span>
+        </div>
+        <p class="text-xs text-slate-500 mt-2 leading-relaxed">All members are requested to join and make the program successful.</p>
+        <button class="w-full mt-3.5 bg-brand-900 hover:bg-brand-950 text-white font-semibold text-xs py-2.5 rounded-lg transition-colors">
+          View Announcement
+        </button>
+      </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+      
+      <header class="bg-white border-b border-slate-200/80 px-8 py-3.5 flex items-center justify-between gap-4">
+        <button class="text-slate-500 hover:text-slate-800 p-1.5 rounded-lg">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+
+        <div class="flex-1 max-w-md mx-4">
+          <div class="relative">
+            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+            <input 
+              type="text" 
+              placeholder="Search anything..." 
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-16 py-2 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 transition-all"
+            >
+            <span class="absolute right-3 top-1/2 -translate-y-1/2 border border-slate-200 bg-white px-1.5 py-0.5 rounded text-[11px] font-semibold text-slate-400">Ctrl + K</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button class="relative p-2 text-slate-500 hover:bg-slate-50 rounded-xl transition-colors">
+            <i data-lucide="bell" class="w-5 h-5"></i>
+            <span class="absolute top-1.5 right-1.5 w-4 h-4 bg-rose-500 text-white rounded-full text-[10px] font-bold flex items-center justify-center">3</span>
+          </button>
+
+          <div class="flex items-center gap-3 border-l border-slate-200 pl-4">
+            <div class="w-9 h-9 rounded-full bg-slate-200 overflow-hidden border border-emerald-600 flex items-center justify-center">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Avatar" class="w-full h-full object-cover">
+            </div>
+            <div class="flex flex-col text-left">
+              <span class="text-xs font-bold text-slate-900">Johar, Balakram Tudu</span>
+              <span class="text-[11px] text-slate-400">Admin</span>
+            </div>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 cursor-pointer"></i>
+          </div>
+        </div>
+      </header>
+
+      <div class="flex-1 overflow-y-auto p-8 space-y-7">
+
+        <div class="relative w-full rounded-2xl overflow-hidden shadow-sm bg-gradient-to-r from-emerald-800 to-teal-900 min-h-[170px] flex items-center px-8 text-white">
+          <img 
+            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=1600" 
+            alt="Scenery" 
+            class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-30"
+          >
+          <div class="relative z-10 flex-1">
+            <div class="flex items-center gap-2">
+              <h2 class="text-2xl font-bold">Johar, Balakram Tudu</h2>
+              <span class="text-2xl">👋</span>
+            </div>
+            <div class="flex items-center gap-2 mt-1">
+              <p class="text-sm text-emerald-100 font-medium">Welcome back, Admin!</p>
+              <span class="bg-emerald-500/20 text-emerald-200 text-xs px-2 py-0.5 rounded-full border border-emerald-400/30 flex items-center gap-1 font-semibold">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Admin
+              </span>
+            </div>
+          </div>
+
+          <div class="relative z-10 bg-brand-900/90 border border-white/10 rounded-2xl p-4 px-6 flex items-center gap-5 backdrop-blur-sm min-w-[240px]">
+            <div class="p-3 bg-white/10 rounded-xl">
+              <i data-lucide="users" class="w-7 h-7 text-white"></i>
+            </div>
+            <div>
+              <span class="text-3xl font-extrabold text-white leading-none">53</span>
+              <p class="text-xs text-slate-300 font-medium mt-1">Total Members</p>
+              <button class="mt-2 text-xs text-emerald-300 font-semibold hover:underline flex items-center gap-1">
+                View Members <i data-lucide="chevron-right" class="w-3 h-3"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <section class="space-y-3">
+          <h3 class="text-sm font-bold text-slate-900 tracking-tight">Quick Actions</h3>
+          <div class="grid grid-cols-7 gap-4">
+            <div class="relative bg-white border border-slate-200/80 rounded-2xl p-4 flex flex-col items-center text-center justify-center hover:shadow-md transition-all cursor-pointer group">
+              <span class="absolute top-2.5 right-2.5 bg-rose-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">12</span>
+              <div class="w-11 h-11 rounded-2xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="message-square" class="w-5 h-5"></i>
+              </div>
+              <span class="text-xs font-bold text-slate-700 mt-2.5">Group Chat</span>
+            </div>
+
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-4 flex flex-col items-center text-center justify-center hover:shadow-md transition-all cursor-pointer group">
+              <div class="w-11 h-11 rounded-2xl bg-blue-500/10 text-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="users" class="w-5 h-5"></i>
+              </div>
+              <span class="text-xs font-bold text-slate-700 mt-2.5">Members</span>
+            </div>
+
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-4 flex flex-col items-center text-center justify-center hover:shadow-md transition-all cursor-pointer group">
+              <div class="w-11 h-11 rounded-2xl bg-purple-500/10 text-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="megaphone" class="w-5 h-5"></i>
+              </div>
+              <span class="text-xs font-bold text-slate-700 mt-2.5">Announcements</span>
+            </div>
+
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-4 flex flex-col items-center text-center justify-center hover:shadow-md transition-all cursor-pointer group">
+              <div class="w-11 h-11 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="calendar" class="w-5 h-5"></i>
+              </div>
+              <span class="text-xs font-bold text-slate-700 mt-2.5">Events</span>
+            </div>
+
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-4 flex flex-col items-center text-center justify-center hover:shadow-md transition-all cursor-pointer group">
+              <div class="w-11 h-11 rounded-2xl bg-teal-500/10 text-teal-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="wallet" class="w-5 h-5"></i>
+              </div>
+              <span class="text-xs font-bold text-slate-700 mt-2.5">Payments</span>
+            </div>
+
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-4 flex flex-col items-center text-center justify-center hover:shadow-md transition-all cursor-pointer group">
+              <div class="w-11 h-11 rounded-2xl bg-pink-500/10 text-pink-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="file-text" class="w-5 h-5"></i>
+              </div>
+              <span class="text-xs font-bold text-slate-700 mt-2.5">Payment History</span>
+            </div>
+
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-4 flex flex-col items-center text-center justify-center hover:shadow-md transition-all cursor-pointer group">
+              <div class="w-11 h-11 rounded-2xl bg-blue-600/10 text-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="settings" class="w-5 h-5"></i>
+              </div>
+              <span class="text-xs font-bold text-slate-700 mt-2.5">Settings</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          <div class="lg:col-span-2 space-y-3">
+            <h3 class="text-sm font-bold text-slate-900 tracking-tight">Overview</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              
+              <div class="bg-emerald-50/50 border border-emerald-100 rounded-2xl p-4 flex flex-col justify-between">
+                <div class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                  <i data-lucide="users" class="w-4 h-4"></i>
+                </div>
+                <div class="mt-4">
+                  <span class="text-2xl font-extrabold text-slate-900">53</span>
+                  <p class="text-xs text-slate-500 font-medium">Total Members</p>
+                </div>
+                <a href="#" class="mt-4 inline-flex items-center text-xs text-emerald-700 font-semibold hover:underline">
+                  View all members <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1"></i>
+                </a>
+              </div>
+
+              <div class="bg-blue-50/50 border border-blue-100 rounded-2xl p-4 flex flex-col justify-between">
+                <div class="w-8 h-8 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                  ₹
+                </div>
+                <div class="mt-4">
+                  <span class="text-2xl font-extrabold text-slate-900">11,150</span>
+                  <p class="text-xs text-slate-500 font-medium">Total Collection</p>
+                </div>
+                <a href="#" class="mt-4 inline-flex items-center text-xs text-blue-700 font-semibold hover:underline">
+                  View collection <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1"></i>
+                </a>
+              </div>
+
+              <div class="bg-rose-50/40 border border-rose-100 rounded-2xl p-4 flex flex-col justify-between">
+                <div class="w-8 h-8 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold">
+                  ₹
+                </div>
+                <div class="mt-4">
+                  <span class="text-2xl font-extrabold text-slate-900">30,000</span>
+                  <p class="text-xs text-slate-500 font-medium">Total Expenditure</p>
+                </div>
+                <a href="#" class="mt-4 inline-flex items-center text-xs text-rose-600 font-semibold hover:underline">
+                  View expenditure <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1"></i>
+                </a>
+              </div>
+
+              <div class="bg-purple-50/40 border border-purple-100 rounded-2xl p-4 flex flex-col justify-between">
+                <div class="w-8 h-8 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center">
+                  <i data-lucide="wallet" class="w-4 h-4"></i>
+                </div>
+                <div class="mt-4">
+                  <span class="text-2xl font-extrabold text-rose-500">-18,850</span>
+                  <p class="text-xs text-slate-500 font-medium">Cash Book Balance</p>
+                </div>
+                <a href="#" class="mt-4 inline-flex items-center text-xs text-purple-700 font-semibold hover:underline">
+                  View details <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1"></i>
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-slate-900 tracking-tight">Upcoming Events</h3>
+              <a href="#" class="text-xs font-semibold text-emerald-700 hover:underline inline-flex items-center">
+                View All <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-0.5"></i>
+              </a>
+            </div>
+            
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-4 space-y-3.5">
+              
+              <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div class="flex items-center gap-3">
+                  <div class="text-center bg-slate-50 border border-slate-200/80 rounded-xl px-2.5 py-1 min-w-[48px]">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Jan</span>
+                    <span class="text-base font-extrabold text-slate-800 leading-none">20</span>
+                  </div>
+                  <div>
+                    <h5 class="text-xs font-bold text-slate-800 leading-snug">Night Jatra Program</h5>
+                    <p class="text-[11px] text-slate-400 font-medium">20 Jan 2026 | Bahanada, Khunta</p>
+                  </div>
+                </div>
+                <span class="bg-emerald-50 border border-emerald-200/60 text-emerald-700 font-bold text-[10px] px-2 py-0.5 rounded-full">
+                  Upcoming
+                </span>
+              </div>
+
+              <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div class="flex items-center gap-3">
+                  <div class="text-center bg-slate-50 border border-slate-200/80 rounded-xl px-2.5 py-1 min-w-[48px]">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Feb</span>
+                    <span class="text-base font-extrabold text-slate-800 leading-none">15</span>
+                  </div>
+                  <div>
+                    <h5 class="text-xs font-bold text-slate-800 leading-snug">Annual General Meeting</h5>
+                    <p class="text-[11px] text-slate-400 font-medium">15 Feb 2026 | Mandawa Hall</p>
+                  </div>
+                </div>
+                <span class="bg-emerald-50 border border-emerald-200/60 text-emerald-700 font-bold text-[10px] px-2 py-0.5 rounded-full">
+                  Upcoming
+                </span>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="text-center bg-slate-50 border border-slate-200/80 rounded-xl px-2.5 py-1 min-w-[48px]">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Mar</span>
+                    <span class="text-base font-extrabold text-slate-800 leading-none">05</span>
+                  </div>
+                  <div>
+                    <h5 class="text-xs font-bold text-slate-800 leading-snug">Cultural Dance Event</h5>
+                    <p class="text-[11px] text-slate-400 font-medium">05 Mar 2026 | Mandawa Ground</p>
+                  </div>
+                </div>
+                <span class="bg-emerald-50 border border-emerald-200/60 text-emerald-700 font-bold text-[10px] px-2 py-0.5 rounded-full">
+                  Upcoming
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-slate-900 tracking-tight">Recent Announcements</h3>
+              <a href="#" class="text-xs font-semibold text-emerald-700 hover:underline inline-flex items-center">
+                View All <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-0.5"></i>
+              </a>
+            </div>
+
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-4">
+              <div class="flex items-center justify-between text-[11px] font-semibold text-slate-400 pb-2 border-b border-slate-100">
+                <span>Title</span>
+                <span>Date</span>
+                <span>Posted By</span>
+              </div>
+              
+              <div class="divide-y divide-slate-100">
+                <div class="py-2.5 flex items-center justify-between text-xs">
+                  <div class="flex items-center gap-2 max-w-[55%]">
+                    <i data-lucide="megaphone" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                    <span class="truncate font-semibold text-slate-700">Night Jatra Program</span>
+                  </div>
+                  <span class="text-slate-400 text-[11px]">20 Jan 2026</span>
+                  <span class="text-slate-500 font-medium text-[11px]">Admin</span>
+                </div>
+
+                <div class="py-2.5 flex items-center justify-between text-xs">
+                  <div class="flex items-center gap-2 max-w-[55%]">
+                    <i data-lucide="megaphone" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                    <span class="truncate font-semibold text-slate-700">Annual General Meeting</span>
+                  </div>
+                  <span class="text-slate-400 text-[11px]">10 Jan 2026</span>
+                  <span class="text-slate-500 font-medium text-[11px]">Admin</span>
+                </div>
+
+                <div class="py-2.5 flex items-center justify-between text-xs">
+                  <div class="flex items-center gap-2 max-w-[55%]">
+                    <i data-lucide="megaphone" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                    <span class="truncate font-semibold text-slate-700">New Member Guidelines</span>
+                  </div>
+                  <span class="text-slate-400 text-[11px]">05 Jan 2026</span>
+                  <span class="text-slate-500 font-medium text-[11px]">Admin</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-slate-900 tracking-tight">Recent Activities</h3>
+              <a href="#" class="text-xs font-semibold text-emerald-700 hover:underline inline-flex items-center">
+                View All <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-0.5"></i>
+              </a>
+            </div>
+
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-4 space-y-3">
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                  <i data-lucide="user-plus" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <h6 class="text-xs font-bold text-slate-800">New member Santosh Murmu joined</h6>
+                  <span class="text-[10px] text-slate-400">Today, 09:30 AM</span>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">
+                  ₹
+                </div>
+                <div>
+                  <h6 class="text-xs font-bold text-slate-800">Payment of ₹2,000 received from Ramesh Tudu</h6>
+                  <span class="text-[10px] text-slate-400">Yesterday, 04:15 PM</span>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 mt-0.5">
+                  <i data-lucide="calendar" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <h6 class="text-xs font-bold text-slate-800">Event "Night Jatra Program" created</h6>
+                  <span class="text-[10px] text-slate-400">18 May 2025, 11:20 AM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-slate-900 tracking-tight">Group Chat Activity</h3>
+              <a href="#" class="text-xs font-semibold text-emerald-700 hover:underline inline-flex items-center">
+                View All <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-0.5"></i>
+              </a>
+            </div>
+
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-4 space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden shrink-0">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=80" alt="Group" class="w-full h-full object-cover">
+                  </div>
+                  <div>
+                    <h6 class="text-xs font-bold text-slate-800">General Discussion</h6>
+                    <span class="text-[11px] text-slate-400">12 new messages</span>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <span class="text-[10px] text-slate-400 block">10:20 AM</span>
+                  <span class="inline-block bg-rose-500 text-white text-[10px] font-bold px-1.5 rounded-full">12</span>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden shrink-0">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=80" alt="Group" class="w-full h-full object-cover">
+                  </div>
+                  <div>
+                    <h6 class="text-xs font-bold text-slate-800">Event Organizers</h6>
+                    <span class="text-[11px] text-slate-400 truncate max-w-[130px] block">Ramesh: Meeting at 5 PM</span>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <span class="text-[10px] text-slate-400 block">09:15 AM</span>
+                  <span class="inline-block bg-rose-500 text-white text-[10px] font-bold px-1.5 rounded-full">3</span>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden shrink-0">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=80" alt="Group" class="w-full h-full object-cover">
+                  </div>
+                  <div>
+                    <h6 class="text-xs font-bold text-slate-800">Youth Group</h6>
+                    <span class="text-[11px] text-slate-400 truncate max-w-[130px] block">Sita: Don't forget practice.</span>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <span class="text-[10px] text-slate-400 block">Yesterday</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <footer class="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 pt-4 border-t border-slate-200/60 gap-2">
+          <div>© 2026 Adim Lahah Mandawa. All rights reserved.</div>
+          <div class="flex items-center gap-4">
+            <a href="#" class="hover:underline">Privacy Policy</a>
+            <span>|</span>
+            <a href="#" class="hover:underline">Terms of Use</a>
+            <span>|</span>
+            <a href="#" class="hover:underline">Help & Support</a>
+          </div>
+        </footer>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
