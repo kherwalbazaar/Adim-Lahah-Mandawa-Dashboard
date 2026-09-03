@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import AppLayout from "@/components/AppLayout";
+import AuthGate from "@/components/AuthGate";
 
 export const metadata: Metadata = {
   title: "Adim Lahah Mandawa - Dashboard",
@@ -15,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full">
-        <AppLayout>{children}</AppLayout>
+        <AuthGate>
+          <AppLayout>{children}</AppLayout>
+        </AuthGate>
       </body>
     </html>
   );

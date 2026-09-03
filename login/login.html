@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kherwal Bazaar - Admin Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Cinzel', 'serif'],
+          },
+          colors: {
+            brand: {
+              gold: '#E5C07B',
+              darkNavy: '#0c1626',
+              cardBg: '#0f1d33',
+              inputBg: '#0c1627',
+              accentBlue: '#2563eb',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="relative min-h-screen w-full flex flex-col justify-between font-sans text-white bg-slate-950 overflow-x-hidden antialiased select-none">
+
+  <div class="fixed inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center bg-no-repeat">
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0b121e]/90 via-[#0d1c33]/70 to-[#102a4e]/60 backdrop-blur-[2px]"></div>
+  </div>
+
+  <main class="relative z-10 flex-1 flex items-center justify-center px-4 py-12 lg:px-16">
+    <div class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      
+      <div class="lg:col-span-6 flex flex-col items-center text-center lg:px-8">
+        <div class="relative w-32 h-32 md:w-36 md:h-36 rounded-full border-2 border-brand-gold/70 flex items-center justify-center p-3 shadow-2xl shadow-yellow-500/10">
+          <div class="w-full h-full rounded-full border border-dashed border-brand-gold/50 flex flex-col items-center justify-center relative">
+            <svg class="w-8 h-8 text-brand-gold absolute -top-4 drop-shadow" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5m14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
+            </svg>
+            <span class="font-serif text-3xl md:text-4xl font-bold tracking-wider text-brand-gold">KB</span>
+          </div>
+        </div>
+
+        <h1 class="mt-6 font-bold tracking-[0.2em] text-2xl md:text-3xl uppercase text-white drop-shadow-md">
+          Kherwal Bazaar
+        </h1>
+        <p class="mt-1 font-semibold tracking-[0.25em] text-xs md:text-sm uppercase text-brand-gold">
+          Admin Portal
+        </p>
+
+        <div class="flex items-center justify-center space-x-3 w-44 my-4 opacity-70">
+          <div class="h-px flex-1 bg-gradient-to-r from-transparent to-brand-gold"></div>
+          <span class="text-brand-gold text-[10px]">❖</span>
+          <div class="h-px flex-1 bg-gradient-to-l from-transparent to-brand-gold"></div>
+        </div>
+
+        <p class="text-slate-300 text-sm md:text-base max-w-sm leading-relaxed font-light">
+          Manage your business, members, transactions and reports with ease.
+        </p>
+
+        <div class="mt-8 flex items-center justify-center gap-6 md:gap-8">
+          <div class="flex flex-col items-center gap-2 group cursor-pointer">
+            <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-lg group-hover:bg-white/20 transition-all duration-200">
+              <i data-lucide="users" class="w-6 h-6 text-slate-100"></i>
+            </div>
+            <span class="text-xs font-medium text-slate-200 tracking-wide">Members</span>
+          </div>
+
+          <div class="flex flex-col items-center gap-2 group cursor-pointer">
+            <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-lg group-hover:bg-white/20 transition-all duration-200">
+              <i data-lucide="wallet" class="w-6 h-6 text-slate-100"></i>
+            </div>
+            <span class="text-xs font-medium text-slate-200 tracking-wide">Transactions</span>
+          </div>
+
+          <div class="flex flex-col items-center gap-2 group cursor-pointer">
+            <div class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-lg group-hover:bg-white/20 transition-all duration-200">
+              <i data-lucide="bar-chart-3" class="w-6 h-6 text-slate-100"></i>
+            </div>
+            <span class="text-xs font-medium text-slate-200 tracking-wide">Reports</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 flex justify-center">
+        <div class="w-full max-w-md bg-[#0e1c31]/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black/70 p-8 md:p-10 flex flex-col items-center">
+          
+          <div class="w-16 h-16 rounded-full bg-[#1b3d75] border border-blue-400/30 flex items-center justify-center shadow-inner shadow-blue-500/20 mb-4">
+            <i data-lucide="shield-check" class="w-8 h-8 text-blue-200"></i>
+          </div>
+
+          <h2 class="text-xl md:text-2xl font-bold tracking-wider uppercase text-white">
+            Admin Login
+          </h2>
+
+          <div class="flex items-center justify-center space-x-2 w-32 my-3 opacity-60">
+            <div class="h-px flex-1 bg-gradient-to-r from-transparent to-brand-gold"></div>
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span>
+            <div class="h-px flex-1 bg-gradient-to-l from-transparent to-brand-gold"></div>
+          </div>
+
+          <form class="w-full mt-4 space-y-4" onsubmit="event.preventDefault();">
+            
+            <div class="space-y-1.5">
+              <label class="block text-xs font-medium text-slate-300">Admin ID</label>
+              <div class="relative flex items-center">
+                <span class="absolute left-3.5 text-slate-400">
+                  <i data-lucide="user" class="w-4 h-4"></i>
+                </span>
+                <input 
+                  type="text" 
+                  placeholder="Enter Admin ID"
+                  class="w-full pl-10 pr-4 py-2.5 bg-[#0a1526]/80 border border-slate-700/60 rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                />
+              </div>
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="block text-xs font-medium text-slate-300">Password</label>
+              <div class="relative flex items-center">
+                <span class="absolute left-3.5 text-slate-400">
+                  <i data-lucide="lock" class="w-4 h-4"></i>
+                </span>
+                <input 
+                  type="password" 
+                  id="adminPassword"
+                  placeholder="Enter Password" 
+                  class="w-full pl-10 pr-10 py-2.5 bg-[#0a1526]/80 border border-slate-700/60 rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                />
+                <button 
+                  type="button" 
+                  onclick="togglePasswordVisibility()" 
+                  class="absolute right-3.5 text-slate-400 hover:text-slate-200 transition-colors">
+                  <i data-lucide="eye" id="toggleIcon" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between text-xs pt-1">
+              <label class="flex items-center space-x-2 text-slate-300 cursor-pointer">
+                <input 
+                  type="checkbox" 
+                  class="w-4 h-4 rounded bg-[#0a1526] border-slate-700 text-blue-600 focus:ring-0 focus:ring-offset-0 cursor-pointer"
+                />
+                <span>Remember me</span>
+              </label>
+              <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors font-medium">Forgot Password?</a>
+            </div>
+
+            <button 
+              type="submit" 
+              class="w-full mt-2 py-2.5 px-4 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-semibold text-sm rounded-lg shadow-lg shadow-blue-700/30 flex items-center justify-center space-x-2 transition-all duration-200 active:scale-[0.99]">
+              <i data-lucide="lock" class="w-4 h-4"></i>
+              <span>LOGIN</span>
+            </button>
+          </form>
+
+          <div class="flex items-center w-full my-5 text-slate-500">
+            <div class="flex-1 h-px bg-slate-800"></div>
+            <span class="px-3 text-[11px] uppercase tracking-wider text-slate-400 font-light">Secure Access</span>
+            <div class="flex-1 h-px bg-slate-800"></div>
+          </div>
+
+          <div class="flex items-center space-x-1.5 text-slate-400 text-xs font-light">
+            <i data-lucide="shield" class="w-3.5 h-3.5 text-slate-400"></i>
+            <span>Your data is safe and encrypted</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="relative z-10 py-6 text-center text-xs text-slate-400/80 font-light tracking-wide">
+    &copy; 2025 KHERWAL BAZAAR. All rights reserved.
+  </footer>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Toggle Password Visibility helper
+    function togglePasswordVisibility() {
+      const input = document.getElementById('adminPassword');
+      const icon = document.getElementById('toggleIcon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.setAttribute('data-lucide', 'eye-off');
+      } else {
+        input.type = 'password';
+        icon.setAttribute('data-lucide', 'eye');
+      }
+      lucide.createIcons();
+    }
+  </script>
+</body>
+</html>

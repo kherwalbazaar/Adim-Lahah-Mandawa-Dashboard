@@ -46,7 +46,7 @@ export default function Sidebar({ open }: { open: boolean }) {
               <img src="/logo.png" alt="ALM Logo" className="w-full h-full object-cover" />
             </div>
           </div>
-          <h1 className="text-xl font-extrabold tracking-tight text-slate-800 uppercase">
+          <h1 className="text-xl font-extrabold tracking-tight text-white uppercase">
             Adim Lahah Mandawa
           </h1>
         </div>
