@@ -7,6 +7,7 @@ import type { LucideIcon } from "lucide-react"
 
 type Metric = {
   title: string
+  mobileTitle: string
   value: string
   subtitle: string
   icon: LucideIcon
@@ -28,6 +29,7 @@ export default function QuickActions() {
   const metrics: Metric[] = [
     {
       title: "Total Members",
+      mobileTitle: "Members",
       value: loading ? "..." : String(totalMembers),
       subtitle: "",
       icon: Users,
@@ -36,6 +38,7 @@ export default function QuickActions() {
     },
     {
       title: "Total Collection",
+      mobileTitle: "Collection",
       value: loading ? "..." : formatINR(totalCollection),
       subtitle: "",
       icon: IndianRupee,
@@ -44,6 +47,7 @@ export default function QuickActions() {
     },
     {
       title: "Total Expenditure",
+      mobileTitle: "Expenditure",
       value: loading ? "..." : formatINR(totalExpenditure),
       subtitle: "",
       icon: Receipt,
@@ -52,6 +56,7 @@ export default function QuickActions() {
     },
     {
       title: "Available Balance",
+      mobileTitle: "Balance",
       value: loading ? "..." : formatINR(balance),
       subtitle: "",
       icon: Wallet,
@@ -61,23 +66,26 @@ export default function QuickActions() {
   ]
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
       {metrics.map((metric) => {
         const Icon = metric.icon
         return (
           <div
             key={metric.title}
-            className={`${metric.bg} ${metric.border} border-b-4 rounded-xl p-3 flex flex-col justify-between shadow-sm hover:shadow-md transition-all duration-100 active:translate-y-[2px] active:border-b-2`}
+            className={`${metric.bg} ${metric.border} border-b-4 rounded-xl p-2 sm:p-3 flex flex-col justify-between shadow-sm hover:shadow-md transition-all duration-100 active:translate-y-[2px] active:border-b-2`}
             style={{ color: "#ffffff" }}
           >
-            <div className="flex items-center justify-center space-x-2">
-              <div className="p-2 rounded-lg" style={{ background: "rgba(255,255,255,0.2)", color: "#ffffff" }}>
-                <Icon className="w-4 h-4" />
+            <div className="flex items-center justify-center space-x-1 sm:space-x-2">
+              <div className="p-1.5 sm:p-2 rounded-lg" style={{ background: "rgba(255,255,255,0.2)", color: "#ffffff" }}>
+                <Icon className="w-3 h-3 sm:w-4 sm:h-4" />
               </div>
-              <span className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.9)" }}>{metric.title}</span>
+              <span className="text-[10px] sm:text-xs font-medium" style={{ color: "rgba(255,255,255,0.9)" }}>
+                <span className="sm:hidden">{metric.mobileTitle}</span>
+                <span className="hidden sm:inline">{metric.title}</span>
+              </span>
             </div>
-            <div className="mt-2 text-center">
-              <h3 className="text-xl font-bold" style={{ color: "#ffffff" }}>{metric.value}</h3>
+            <div className="mt-1.5 sm:mt-2 text-center">
+              <h3 className="text-base sm:text-xl font-bold" style={{ color: "#ffffff" }}>{metric.value}</h3>
             </div>
           </div>
         )

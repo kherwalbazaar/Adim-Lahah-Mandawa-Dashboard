@@ -21,12 +21,13 @@ import {
   ArrowUp,
   Calculator,
   Search,
-  Filter,
   Info,
   PieChart,
   ArrowRightLeft,
   Plus,
   X,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react"
 import { buildCashbook, type CashbookData, type RawMap } from "@/lib/cashbook"
 import type { Member, Payment } from "@/data/members"
@@ -56,6 +57,15 @@ function formatTime(ts: number) {
   return `${hours}:${String(minutes).padStart(2, "0")} ${ampm}`
 }
 
+function formatDateShort(dateStr: string): string {
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  const parts = dateStr.split("-")
+  if (parts.length !== 3) return dateStr
+  const day = parseInt(parts[2], 10)
+  const month = months[parseInt(parts[1], 10) - 1]
+  return `${day} ${month}`
+}
+
 function toDateKey(d: Date): string {
   const y = d.getFullYear()
   const m = String(d.getMonth() + 1).padStart(2, "0")
@@ -72,6 +82,7 @@ function getPaymentHistory(member: Member): Payment[] {
 
 type Metric = {
   label: string
+  mobileLabel: string
   value: string
   icon: React.ElementType
   bg: string
@@ -82,17 +93,20 @@ function MetricCard({ metric }: { metric: Metric }) {
   const Icon = metric.icon
   return (
     <div
-      className={`${metric.bg} ${metric.border} border-b-4 rounded-xl p-3 flex flex-col justify-center shadow-sm hover:shadow-md transition-all duration-100 active:translate-y-[2px] active:border-b-2`}
+      className={`${metric.bg} ${metric.border} border-b-4 rounded-xl p-2 sm:p-3 flex flex-col justify-center shadow-sm hover:shadow-md transition-all duration-100 active:translate-y-[2px] active:border-b-2`}
       style={{ color: "#ffffff" }}
     >
-      <div className="flex items-center justify-center space-x-2">
-        <div className="p-2 rounded-lg" style={{ background: "rgba(255,255,255,0.2)", color: "#ffffff" }}>
-          <Icon className="w-4 h-4" />
+      <div className="flex items-center justify-center space-x-1 sm:space-x-2">
+        <div className="p-1.5 sm:p-2 rounded-lg" style={{ background: "rgba(255,255,255,0.2)", color: "#ffffff" }}>
+          <Icon className="w-3 h-3 sm:w-4 sm:h-4" />
         </div>
-        <span className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.9)" }}>{metric.label}</span>
+        <span className="text-[10px] sm:text-xs font-medium" style={{ color: "rgba(255,255,255,0.9)" }}>
+          <span className="sm:hidden">{metric.mobileLabel}</span>
+          <span className="hidden sm:inline">{metric.label}</span>
+        </span>
       </div>
-      <div className="mt-2 text-center">
-        <h3 className="text-xl font-bold" style={{ color: "#ffffff" }}>{metric.value}</h3>
+      <div className="mt-1.5 sm:mt-2 text-center">
+        <h3 className="text-sm sm:text-xl font-bold" style={{ color: "#ffffff" }}>{metric.value}</h3>
       </div>
     </div>
   )
@@ -114,6 +128,16 @@ export default function CashBookPage() {
   const [remark, setRemark] = useState("")
   const [submitting, setSubmitting] = useState(false)
   const [formError, setFormError] = useState<string | null>(null)
+  const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set())
+
+  const toggleCard = (id: string) => {
+    setExpandedCards((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
+  }
 
   useEffect(() => {
     const cashbookRef = ref(database, "cashBook")
@@ -247,6 +271,7 @@ export default function CashBookPage() {
   const metricCards: Metric[] = [
     {
       label: "Available Balance",
+      mobileLabel: "Balance",
       value: metrics ? `₹${fmt(metrics.closing)}` : "—",
       icon: Calculator,
       bg: "bg-amber-500",
@@ -254,6 +279,7 @@ export default function CashBookPage() {
     },
     {
       label: "Total Collections",
+      mobileLabel: "Collections",
       value: data ? `₹${fmt(memberCollection)}` : "—",
       icon: ArrowDown,
       bg: "bg-emerald-500",
@@ -261,6 +287,7 @@ export default function CashBookPage() {
     },
     {
       label: "Total Expense",
+      mobileLabel: "Expense",
       value: metrics ? `₹${fmt(metrics.totalOut)}` : "—",
       icon: ArrowUp,
       bg: "bg-red-500",
@@ -339,7 +366,7 @@ export default function CashBookPage() {
   return (
     <>
       {/* METRIC CARDS */}
-      <div className="-mt-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="-mt-2 grid grid-cols-3 gap-2 sm:gap-4">
         {metricCards.map((m) => (
           <MetricCard key={m.label} metric={m} />
         ))}
@@ -363,7 +390,7 @@ export default function CashBookPage() {
               Cash Book Transactions
             </h3>
 
-            <div className="flex items-center space-x-2 mb-4">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-2 mb-4">
               <div className="relative flex-1">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2.5 pointer-events-none text-slate-400">
                   <Search className="w-3.5 h-3.5" />
@@ -376,13 +403,6 @@ export default function CashBookPage() {
                   className="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg pl-8 pr-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 />
               </div>
-              <button
-                type="button"
-                className="flex items-center space-x-1 text-xs border border-slate-200 rounded-lg px-2.5 py-1.5 bg-slate-50 text-slate-600 hover:bg-slate-100"
-              >
-                <Filter className="w-3.5 h-3.5" />
-                <span>Filter</span>
-              </button>
             </div>
 
             <div className="space-y-3">
@@ -391,19 +411,71 @@ export default function CashBookPage() {
                   No transactions found.
                 </div>
               )}
+              {/* Mobile header row */}
+              {filtered.length > 0 && (
+                <div className="sm:hidden grid grid-cols-4 gap-1 text-[9px] font-bold text-slate-500 uppercase tracking-wide px-1 pb-1 border-b border-slate-200">
+                  <span>Description</span>
+                  <span className="text-right">Expense</span>
+                  <span className="text-center">Date</span>
+                  <span className="text-right">Balance</span>
+                </div>
+              )}
               {filtered.map((e) => {
                 const isIn = e.type === "in"
                 const balance = data.running.get(e.id) ?? 0
+                const isExpanded = expandedCards.has(e.id)
                 return (
                   <div
                     key={e.id}
-                    className={`rounded-xl border-l-4 border p-3 shadow-sm ${
+                    className={`rounded-lg sm:rounded-xl border-l-4 border shadow-sm ${
                       isIn
                         ? "border-l-emerald-500 border-emerald-200 bg-emerald-50"
                         : "border-l-red-500 border-red-200 bg-red-50"
                     }`}
                   >
-                    <div className="grid gap-3 text-[11px] sm:grid-cols-4">
+                    {/* Mobile: collapsible layout */}
+                    <div
+                      className="sm:hidden cursor-pointer select-none"
+                      onClick={() => toggleCard(e.id)}
+                    >
+                      <div className="grid grid-cols-4 gap-1 text-[10px] p-3 items-center">
+                        <p className="truncate font-medium text-slate-800">{e.remark || "—"}</p>
+                        <p className={`font-bold text-right ${isIn ? "text-emerald-700" : "text-red-700"}`}>
+                          ₹{fmt(e.amount)}
+                        </p>
+                        <p className="font-semibold text-slate-700 text-center">{formatDateShort(e.date)}</p>
+                        <div className="flex items-center justify-end gap-1">
+                          <p className="font-bold text-slate-800">₹{fmt(balance)}</p>
+                          {isExpanded ? (
+                            <ChevronUp className="w-3 h-3 text-slate-400" />
+                          ) : (
+                            <ChevronDown className="w-3 h-3 text-slate-400" />
+                          )}
+                        </div>
+                      </div>
+                      {isExpanded && (
+                        <div className="px-3 pb-3 pt-1 border-t border-slate-200/60 text-[10px] space-y-1">
+                          <div className="flex justify-between">
+                            <span className="text-slate-500">Date</span>
+                            <span className="font-semibold text-slate-700">{e.date}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-slate-500">Time</span>
+                            <span className="font-semibold text-slate-700">{formatTime(e.createdAt)}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-slate-500">Category</span>
+                            <span className="font-semibold text-slate-700">{e.category}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-slate-500">Mode</span>
+                            <span className="font-semibold text-slate-700">{e.mode}</span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    {/* Desktop: original 4-column grid */}
+                    <div className="hidden sm:grid gap-3 text-[11px] sm:grid-cols-4 p-3">
                       <div className="min-w-0">
                         <p className="whitespace-nowrap text-[10px] text-slate-400">Date &amp; Time</p>
                         <p className="whitespace-nowrap font-semibold text-slate-700">

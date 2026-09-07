@@ -2,9 +2,23 @@
 
 import { Menu, Search, Bell, ChevronDown, LogOut, UserRound } from "lucide-react";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
+
+const sectionTitles: Record<string, string> = {
+  "/": "Adim Lahah Mandawa",
+  "/members": "Members",
+  "/cashbook": "Cash Book",
+  "/expenses": "Expenses",
+  "/events": "Events",
+  "/payments": "Payments",
+  "/payment-history": "Payment History",
+  "/profile": "My Profile",
+  "/settings": "Settings",
+};
 
 export default function Header({ onToggleSidebar }: { onToggleSidebar: () => void }) {
   const [profileOpen, setProfileOpen] = useState(false)
+  const pathname = usePathname()
 
   const handleLogout = () => {
     window.localStorage.removeItem("alm-admin-authenticated")
@@ -12,8 +26,10 @@ export default function Header({ onToggleSidebar }: { onToggleSidebar: () => voi
     window.location.replace("/")
   }
 
+  const title = sectionTitles[pathname] || "Adim Lahah Mandawa"
+
   return (
-    <header className="bg-white border-b border-slate-200/80 px-8 py-3.5 flex items-center justify-between gap-4">
+    <header className="bg-white border-b border-slate-200/80 px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3 sm:gap-4">
       <button
         type="button"
         onClick={onToggleSidebar}
@@ -24,7 +40,11 @@ export default function Header({ onToggleSidebar }: { onToggleSidebar: () => voi
         <Menu className="w-6 h-6" />
       </button>
 
-      <div className="flex-1 max-w-md mx-4">
+      <span className="sm:hidden text-sm font-extrabold tracking-tight text-emerald-800 uppercase truncate">
+        {title}
+      </span>
+
+      <div className="flex-1 max-w-md mx-2 sm:mx-4 hidden sm:block">
         <div className="relative">
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
@@ -32,13 +52,13 @@ export default function Header({ onToggleSidebar }: { onToggleSidebar: () => voi
             placeholder="Search anything..."
             className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-16 py-2 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 transition-all"
           />
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 border border-slate-200 bg-white px-1.5 py-0.5 rounded text-[11px] font-semibold text-slate-400">
+          <span className="absolute right-3 top-1/2 -translate-y-1/2 border border-slate-200 bg-white px-1.5 py-0.5 rounded text-[11px] font-semibold text-slate-400 hidden md:inline">
             Ctrl + K
           </span>
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4">
         <button className="relative p-2 text-slate-500 hover:bg-slate-50 rounded-xl transition-colors">
           <Bell className="w-5 h-5" />
           <span className="absolute top-1.5 right-1.5 w-4 h-4 bg-rose-500 text-white rounded-full text-[10px] font-bold flex items-center justify-center">
@@ -46,7 +66,7 @@ export default function Header({ onToggleSidebar }: { onToggleSidebar: () => voi
           </span>
         </button>
 
-        <div className="relative flex items-center gap-3 border-l border-slate-200 pl-4">
+        <div className="relative items-center gap-3 border-l border-slate-200 pl-2 sm:pl-4 hidden sm:flex">
           <div className="w-9 h-9 rounded-full bg-slate-200 overflow-hidden border border-emerald-600 flex items-center justify-center">
             <img
               src="/Balakram%20Tudu.png"

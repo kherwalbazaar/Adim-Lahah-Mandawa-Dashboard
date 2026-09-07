@@ -33,9 +33,9 @@ export default function RecentMembers() {
       <div className="bg-white border border-slate-200/80 rounded-2xl p-4">
         <div className="flex items-center justify-between text-[11px] font-semibold text-slate-400 pb-2 border-b border-slate-100">
           <span>Name</span>
-          <span>Designation</span>
+          <span className="hidden sm:inline">Designation</span>
           <span>Status</span>
-          <span>Due</span>
+          <span className="hidden sm:inline">Due</span>
         </div>
 
         <div className="divide-y divide-slate-100">
@@ -49,7 +49,7 @@ export default function RecentMembers() {
                 key={member.id}
                 className="py-2.5 flex items-center justify-between text-xs"
               >
-                <div className="flex items-center gap-2 max-w-[35%]">
+                <div className="flex items-center gap-2 max-w-[40%] sm:max-w-[35%]">
                   <div className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs">
                     {member.name.charAt(0)}
                   </div>
@@ -57,7 +57,7 @@ export default function RecentMembers() {
                     {member.name}
                   </span>
                 </div>
-                <span className="text-slate-500 font-medium text-[11px]">
+                <span className="text-slate-500 font-medium text-[11px] hidden sm:inline">
                   {member.designation}
                 </span>
                 <span
@@ -70,7 +70,7 @@ export default function RecentMembers() {
                   {member.status === "paid" ? "Paid" : "Pending"}
                 </span>
                 <span
-                  className={`font-semibold ${
+                  className={`font-semibold hidden sm:inline ${
                     member.due > 0 ? "text-rose-500" : "text-slate-400"
                   }`}
                 >

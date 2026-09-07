@@ -2,7 +2,7 @@
 
 import { useCashBook, useMembers } from "@/lib/firebase-data"
 import { formatINR } from "@/data/members"
-import { Search, Plus, X, IndianRupee, Trash2, Pencil } from "lucide-react"
+import { Search, Plus, X, IndianRupee, Trash2, Pencil, MoreVertical } from "lucide-react"
 import { useState } from "react"
 import { ref, push, update, remove } from "firebase/database"
 import { database } from "@/lib/firebase"
@@ -14,6 +14,7 @@ export default function ExpensesPage() {
   const [modalOpen, setModalOpen] = useState(false)
   const [editingId, setEditingId] = useState<string | null>(null)
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null)
+  const [actionMenuId, setActionMenuId] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
   const [formError, setFormError] = useState<string | null>(null)
 
@@ -104,43 +105,52 @@ export default function ExpensesPage() {
   return (
     <>
       {/* Stats Cards */}
-      <div className="grid grid-cols-3 gap-3">
-        <div className="bg-red-500 border-red-700 border-b-4 rounded-xl p-3 flex flex-col justify-center shadow-sm hover:shadow-md transition-all duration-100 active:translate-y-[2px] active:border-b-2" style={{ color: "#ffffff" }}>
-          <div className="flex items-center justify-center space-x-2">
-            <div className="p-2 rounded-lg" style={{ background: "rgba(255,255,255,0.2)", color: "#ffffff" }}>
-              <IndianRupee className="w-4 h-4" />
+      <div className="grid grid-cols-3 gap-2 sm:gap-3">
+        <div className="bg-red-500 border-red-700 border-b-4 rounded-xl p-2 sm:p-3 flex flex-col justify-center shadow-sm hover:shadow-md transition-all duration-100 active:translate-y-[2px] active:border-b-2" style={{ color: "#ffffff" }}>
+          <div className="flex items-center justify-center space-x-1 sm:space-x-2">
+            <div className="p-1.5 sm:p-2 rounded-lg" style={{ background: "rgba(255,255,255,0.2)", color: "#ffffff" }}>
+              <IndianRupee className="w-3 h-3 sm:w-4 sm:h-4" />
             </div>
-            <span className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.9)" }}>Total Expenses</span>
+            <span className="text-[10px] sm:text-xs font-medium" style={{ color: "rgba(255,255,255,0.9)" }}>
+              <span className="sm:hidden">Expenses</span>
+              <span className="hidden sm:inline">Total Expenses</span>
+            </span>
           </div>
-          <div className="mt-2 text-center">
-            <h3 className="text-xl font-bold" style={{ color: "#ffffff" }}>{formatINR(totalExpenses)}</h3>
+          <div className="mt-1.5 sm:mt-2 text-center">
+            <h3 className="text-sm sm:text-xl font-bold" style={{ color: "#ffffff" }}>{formatINR(totalExpenses)}</h3>
           </div>
         </div>
-        <div className="bg-green-500 border-green-700 border-b-4 rounded-xl p-3 flex flex-col justify-center shadow-sm hover:shadow-md transition-all duration-100 active:translate-y-[2px] active:border-b-2" style={{ color: "#ffffff" }}>
-          <div className="flex items-center justify-center space-x-2">
-            <div className="p-2 rounded-lg font-bold text-sm" style={{ background: "rgba(255,255,255,0.2)", color: "#ffffff" }}>₹</div>
-            <span className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.9)" }}>Total Collection</span>
+        <div className="bg-green-500 border-green-700 border-b-4 rounded-xl p-2 sm:p-3 flex flex-col justify-center shadow-sm hover:shadow-md transition-all duration-100 active:translate-y-[2px] active:border-b-2" style={{ color: "#ffffff" }}>
+          <div className="flex items-center justify-center space-x-1 sm:space-x-2">
+            <div className="p-1.5 sm:p-2 rounded-lg font-bold text-xs sm:text-sm" style={{ background: "rgba(255,255,255,0.2)", color: "#ffffff" }}>₹</div>
+            <span className="text-[10px] sm:text-xs font-medium" style={{ color: "rgba(255,255,255,0.9)" }}>
+              <span className="sm:hidden">Collection</span>
+              <span className="hidden sm:inline">Total Collection</span>
+            </span>
           </div>
-          <div className="mt-2 text-center">
-            <h3 className="text-xl font-bold" style={{ color: "#ffffff" }}>{formatINR(collections)}</h3>
+          <div className="mt-1.5 sm:mt-2 text-center">
+            <h3 className="text-sm sm:text-xl font-bold" style={{ color: "#ffffff" }}>{formatINR(collections)}</h3>
           </div>
         </div>
-        <div className="bg-purple-500 border-purple-700 border-b-4 rounded-xl p-3 flex flex-col justify-center shadow-sm hover:shadow-md transition-all duration-100 active:translate-y-[2px] active:border-b-2" style={{ color: "#ffffff" }}>
-          <div className="flex items-center justify-center space-x-2">
-            <div className="p-2 rounded-lg" style={{ background: "rgba(255,255,255,0.2)", color: "#ffffff" }}>
-              <IndianRupee className="w-4 h-4" />
+        <div className="bg-purple-500 border-purple-700 border-b-4 rounded-xl p-2 sm:p-3 flex flex-col justify-center shadow-sm hover:shadow-md transition-all duration-100 active:translate-y-[2px] active:border-b-2" style={{ color: "#ffffff" }}>
+          <div className="flex items-center justify-center space-x-1 sm:space-x-2">
+            <div className="p-1.5 sm:p-2 rounded-lg" style={{ background: "rgba(255,255,255,0.2)", color: "#ffffff" }}>
+              <IndianRupee className="w-3 h-3 sm:w-4 sm:h-4" />
             </div>
-            <span className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.9)" }}>Available Balance</span>
+            <span className="text-[10px] sm:text-xs font-medium" style={{ color: "rgba(255,255,255,0.9)" }}>
+              <span className="sm:hidden">Balance</span>
+              <span className="hidden sm:inline">Available Balance</span>
+            </span>
           </div>
-          <div className="mt-2 text-center">
-            <h3 className="text-xl font-bold" style={{ color: "#ffffff" }}>{formatINR(availableBalance)}</h3>
+          <div className="mt-1.5 sm:mt-2 text-center">
+            <h3 className="text-sm sm:text-xl font-bold" style={{ color: "#ffffff" }}>{formatINR(availableBalance)}</h3>
           </div>
         </div>
       </div>
 
       {/* Search */}
-      <div className="flex items-center justify-between">
-        <div className="relative max-w-md">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+        <div className="relative max-w-md flex-1">
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
@@ -161,12 +171,12 @@ export default function ExpensesPage() {
 
       {/* Expenses Table */}
       <div className="bg-white border border-slate-200/80 rounded-2xl overflow-hidden">
-        <div className="flex bg-slate-50 border-b border-slate-200/80 px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider text-center">
-          <div className="w-[30%] text-left">Description</div>
-          <div className="w-[20%]">Amount</div>
-          <div className="w-[20%]">Date</div>
-          <div className="w-[15%]">Via</div>
-          <div className="w-[15%] text-right">Actions</div>
+          <div className="flex bg-slate-50 border-b border-slate-200/80 px-0 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider text-center">
+          <div className="w-[50%] sm:w-[30%] text-left pl-3 sm:pl-0">Description</div>
+          <div className="w-[25%] sm:w-[20%]">Amount</div>
+          <div className="hidden sm:block sm:w-[20%]">Date</div>
+          <div className="hidden sm:block sm:w-[15%]">Via</div>
+          <div className="w-[25%] sm:w-[15%] text-right">Actions</div>
         </div>
 
         <div className="divide-y divide-slate-100">
@@ -176,26 +186,36 @@ export default function ExpensesPage() {
             </div>
           ) : (
             filtered.map((e) => (
-              <div key={e.id} className="flex items-center px-6 py-2 hover:bg-slate-50 transition-colors text-center whitespace-nowrap">
-                <div className="w-[30%] text-left">
+              <div key={e.id} className="flex items-center px-0 sm:px-6 py-2 hover:bg-slate-50 transition-colors text-center whitespace-nowrap">
+                <div className="w-[50%] sm:w-[30%] text-left pl-3 sm:pl-0">
                   <p className="text-xs font-bold text-slate-800 truncate">{e.description}</p>
                 </div>
-                <div className="w-[20%]">
+                <div className="w-[25%] sm:w-[20%]">
                   <span className="text-xs font-bold text-rose-600">{formatINR(e.amount)}</span>
                 </div>
-                <div className="w-[20%]">
+                <div className="hidden sm:block sm:w-[20%]">
                   <span className="text-[11px] text-slate-600">{new Date(e.date).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}</span>
                 </div>
-                <div className="w-[15%]">
+                <div className="hidden sm:block sm:w-[15%]">
                   <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-600">{e.via || "Cash"}</span>
                 </div>
-                <div className="w-[15%] flex justify-end gap-2">
-                  <button onClick={() => openEdit(e)} className="text-blue-500 hover:text-blue-700">
-                    <Pencil className="w-3 h-3" />
+                <div className="w-[25%] sm:w-[15%] flex justify-end pr-3 sm:pr-0 relative">
+                  <button onClick={() => setActionMenuId(actionMenuId === e.id ? null : e.id)} className="text-slate-500 hover:text-slate-700 p-1">
+                    <MoreVertical className="w-4 h-4" />
                   </button>
-                  <button onClick={() => setDeleteConfirm(e.id)} className="text-rose-400 hover:text-rose-600">
-                    <Trash2 className="w-3 h-3" />
-                  </button>
+                  {actionMenuId === e.id && (
+                    <>
+                      <div className="fixed inset-0 z-40" onClick={() => setActionMenuId(null)} />
+                      <div className="absolute right-0 top-full z-50 mt-1 w-32 bg-white border border-slate-200 rounded-lg shadow-lg py-1">
+                        <button onClick={() => { openEdit(e); setActionMenuId(null) }} className="flex items-center gap-2 w-full px-3 py-2 text-xs text-slate-700 hover:bg-slate-50">
+                          <Pencil className="w-3 h-3" /> Edit
+                        </button>
+                        <button onClick={() => { setDeleteConfirm(e.id); setActionMenuId(null) }} className="flex items-center gap-2 w-full px-3 py-2 text-xs text-rose-600 hover:bg-rose-50">
+                          <Trash2 className="w-3 h-3" /> Delete
+                        </button>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             ))
