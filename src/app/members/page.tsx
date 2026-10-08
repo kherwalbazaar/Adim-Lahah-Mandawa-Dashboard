@@ -181,10 +181,6 @@ export default function MembersPage() {
       setFormError("Please enter member name.")
       return
     }
-    if (!phone.trim()) {
-      setFormError("Please enter phone number.")
-      return
-    }
     if (
       (designation === "Secretary" || designation === "President") &&
       members.some((member) => member.designation === designation && member.id !== editingMember)
@@ -410,7 +406,7 @@ export default function MembersPage() {
               </div>
 
               <div>
-                <p className="text-[11px] text-slate-500 font-medium mb-1">Phone *</p>
+                <p className="text-[11px] text-slate-500 font-medium mb-1">Phone</p>
                 <input
                   type="tel"
                   value={phone}
