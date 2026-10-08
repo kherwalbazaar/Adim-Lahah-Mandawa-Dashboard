@@ -17,6 +17,7 @@ export default function MembersPage() {
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
   const [designation, setDesignation] = useState("General Member")
+  const [amount, setAmount] = useState("")
   const [formError, setFormError] = useState<string | null>(null)
   const [selectedMember, setSelectedMember] = useState<EnrichedMember | null>(null)
   const [editingMember, setEditingMember] = useState<string | null>(null)
@@ -46,6 +47,7 @@ export default function MembersPage() {
     setName("")
     setPhone("")
     setDesignation("General Member")
+    setAmount("")
     setFormError(null)
     setModalOpen(true)
   }
@@ -181,6 +183,11 @@ export default function MembersPage() {
       setFormError("Please enter member name.")
       return
     }
+    const amt = amount.trim() ? Number(amount) : 0
+    if (amount.trim() && (!Number.isFinite(amt) || amt <= 0)) {
+      setFormError("Please enter a valid amount.")
+      return
+    }
     if (
       (designation === "Secretary" || designation === "President") &&
       members.some((member) => member.designation === designation && member.id !== editingMember)
@@ -205,6 +212,11 @@ export default function MembersPage() {
         return
       }
       const id = `mandwa-${Date.now()}`
+      const payDate = new Date().toISOString().split("T")[0]
+      const paymentHistory =
+        amt > 0
+          ? [{ id: `pay-${Date.now()}`, amount: amt, date: payDate, description: "Cash", method: "Cash" as const }]
+          : []
       await set(ref(database, `members/${id}`), {
         id,
         name: name.trim(),
@@ -214,9 +226,9 @@ export default function MembersPage() {
         membershipFee: 2000,
         birthday: "",
         image: "",
-        paymentHistory: [],
+        paymentHistory,
         categories: ["new"],
-        paidDate: null,
+        paidDate: paymentHistory.length ? payDate : null,
       })
       setModalOpen(false)
     } catch (e) {
@@ -431,6 +443,19 @@ export default function MembersPage() {
                   <option value="Executive Member" disabled>Executive Member (auto-assigned)</option>
                 </select>
               </div>
+
+              {!editingMember && (
+                <div>
+                  <p className="text-[11px] text-slate-500 font-medium mb-1">Amount (₹)</p>
+                  <input
+                    type="number"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                    placeholder="Enter amount (optional)"
+                    className="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  />
+                </div>
+              )}
 
               {formError && (
                 <div className="bg-red-50 border border-red-200 rounded-lg p-2 text-xs font-semibold text-red-600">
